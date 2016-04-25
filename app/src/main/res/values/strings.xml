@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lineapp</string>
+    <string name="registro">registro</string>
+    <string name="signIn">Sign In</string>
+</resources>
