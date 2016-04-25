@@ -70,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Fecha Nacimiento"
                     android:id="@+id/txtFechaNac"
+                    android:focusable="false"
                     android:textColor="@color/white"
                     android:layout_weight="0.1" />
 
@@ -92,6 +93,7 @@
                     android:textSize="20dp"
                     android:textColor="@color/white"
                     android:layout_weight="0.1"
+                    android:onClick="registrarUsuario"
                     android:background="@drawable/button_center"
                     android:text="Registrar" />
 
