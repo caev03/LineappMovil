@@ -9,6 +9,6 @@
         android:icon="@drawable/lineapp_logo"
         android:orderInCategory="100"
         app:showAsAction="ifRoom|withText"
-        android:title="@string/action_settings"/>
+        android:title=""/>
 
 </menu>

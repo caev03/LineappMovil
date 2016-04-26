@@ -45,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
+
                     android:id="@+id/txtNombre"
                     android:textColor="@color/white"
                     android:layout_weight="0.11"/>
@@ -53,8 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Correo"
+                    android:focusable="false"
                     android:id="@+id/txtCorreo"
-                    android:inputType="textEmailAddress"
                     android:textColor="@color/white"
                     android:layout_weight="0.1" />
 
@@ -62,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Contraseña"
-                    android:inputType="textPassword"
+                    android:focusable="false"
                     android:id="@+id/txtContrasena"
                     android:textColor="@color/white"
                     android:layout_weight="0.1" />
@@ -82,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="0.1"
-                    android:textSize="19dp"
+                    android:textSize="20dp"
                     android:textColor="@color/white"
                     android:buttonTint="@color/white"
                     android:text="Presenta discapacidad" />

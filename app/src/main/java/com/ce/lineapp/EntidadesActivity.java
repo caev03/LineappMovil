@@ -32,7 +32,7 @@ public class EntidadesActivity extends BaseActivity implements View.OnClickListe
          * Setting title and itemChecked
          */
         mDrawerList.setItemChecked(position, true);
-        //setTitle(listArray[position]);
+        setTitle(getString(R.string.app_name));
     }
     public void onClick(View v)
     {

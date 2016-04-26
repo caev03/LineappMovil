@@ -31,7 +31,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Universidad\nde los Andes"
-                    android:id="@+id/button4" />
+                    android:id="@+id/btnAndes" />
 
             </LinearLayout>
 
@@ -46,7 +46,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Pontificia\nUniversidad\nJaveriana"
-                    android:id="@+id/button5" />
+                    android:id="@+id/btnJaveriana" />
 
             </LinearLayout>
             <LinearLayout
@@ -60,7 +60,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Jorge Tadeo\nLozano"
-                    android:id="@+id/button6" />
+                    android:id="@+id/btnTadeo" />
 
             </LinearLayout>
             <LinearLayout
@@ -74,7 +74,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Universidad\ndel Externado"
-                    android:id="@+id/button7" />
+                    android:id="@+id/btnExternado" />
 
             </LinearLayout>
         </LinearLayout>

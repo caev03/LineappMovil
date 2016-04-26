@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/background"
+    android:background="@drawable/back"
     tools:context="com.ce.lineapp.LoginActivity">
 
     <ScrollView
@@ -15,8 +15,8 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:weightSum="1"
             android:layout_gravity="center"
             android:orientation="vertical">
@@ -29,50 +29,61 @@
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/lineapp_logo"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:textSize="50dp"
                     android:text="LineApp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorAccent"
                     android:layout_gravity="center" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:ems="10"
-                    android:textColor="@color/white"
-                    android:hint="E-mail"
-                    android:id="@+id/txtLogin" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:ems="10"
-                    android:hint="Password"
-                    android:textColor="@color/white"
-                    android:id="@+id/txtPassword" />
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
                     android:gravity="center"
+                    android:background="@drawable/text_field_center">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:textColor="@color/white"
+                        android:hint="E-mail"
+                        android:id="@+id/txtLogin" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:ems="10"
+                        android:hint="Password"
+                        android:textColor="@color/white"
+                        android:id="@+id/txtPassword" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
                     android:weightSum="1">
 
                     <Button
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/registro"
                         android:textColor="@color/white"
@@ -82,9 +93,10 @@
                         android:id="@+id/button" />
 
                     <Button
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/signIn"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/white"
                         android:layout_weight="0.5"
                         android:onClick="ingresarUsuario"

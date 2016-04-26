@@ -8,10 +8,7 @@
         android:topRightRadius="30dp" />
     <gradient
         android:gradientRadius="50dp"
-        android:endColor="@color/buttonsBackgroundColor"
-        android:startColor="@color/buttonsBackgroundColor"
+        android:endColor="#AA000000"
+        android:startColor="#AA000000"
         android:type="radial" />
-    <stroke
-        android:width="2dp"
-        android:color="@color/radialGradientEnd" />
 </shape>

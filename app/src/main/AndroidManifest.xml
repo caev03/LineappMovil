@@ -22,7 +22,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".EntidadesActivity" />
         <activity android:name=".UniversidadesActivity" />
-        <activity android:name=".ErrorActivity"></activity>
+        <activity android:name=".ErrorActivity" />
+        <activity android:name=".OpcionesAndesActivity"></activity>
     </application>
 
 </manifest>

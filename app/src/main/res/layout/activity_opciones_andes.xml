@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/queue_back"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ce.lineapp.OpcionesAndesActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="0.85">
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Admisiones y Registro"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_center"
+
+                    android:id="@+id/btnAdmYReg" />
+
+            </LinearLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Entidad:"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/textView2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Tiempo\nEstimado:"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/textView3" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apoyo Financiero"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/btnApoyoFin" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmApoFin" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cartera"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/btnCartera" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmCartera" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Facturación"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/btnFacturacion" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="55 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmFacturacion" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Matriculas"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/btnMatriculas" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmMatriculas" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caja Menor"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/btnCajaMenor" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmCajaMen" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="0.02"
+                    android:weightSum="1">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caja de Ingresos"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:id="@+id/button4" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="95 min"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_center"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        android:id="@+id/btnTmCajaIng" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
