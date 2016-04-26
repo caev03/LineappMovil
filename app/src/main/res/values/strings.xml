@@ -2,4 +2,7 @@
     <string name="app_name">Lineapp</string>
     <string name="registro">registro</string>
     <string name="signIn">Sign In</string>
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+    <string name="action_settings">Settings</string>
 </resources>

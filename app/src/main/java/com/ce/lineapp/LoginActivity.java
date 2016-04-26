@@ -5,6 +5,7 @@ import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -12,6 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_login);
         EditText txtLogin = (EditText) findViewById(R.id.txtLogin);
         txtLogin.getBackground().mutate().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
@@ -26,4 +28,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(this,RegisterActivity.class);
         startActivity(i);
     }
+
+    public void ingresarUsuario(View v)
+    {
+        Intent i = new Intent(this,EntidadesActivity.class);
+        startActivity(i);
+    }
+
 }
