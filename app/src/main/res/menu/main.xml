@@ -4,11 +4,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.navigation.drawer.activity.MainActivity" >
 
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/lineapp_logo"
-        android:orderInCategory="100"
-        app:showAsAction="ifRoom|withText"
-        android:title=""/>
 
 </menu>

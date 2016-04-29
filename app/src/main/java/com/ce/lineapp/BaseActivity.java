@@ -1,8 +1,10 @@
 package com.ce.lineapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -202,13 +204,4 @@ public class BaseActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    /* We can override onBackPressed method to toggle navigation drawer*/
-    @Override
-    public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            mDrawerLayout.openDrawer(mDrawerList);
-        }
-    }
 }

@@ -23,7 +23,8 @@
         <activity android:name=".EntidadesActivity" />
         <activity android:name=".UniversidadesActivity" />
         <activity android:name=".ErrorActivity" />
-        <activity android:name=".OpcionesAndesActivity"></activity>
+        <activity android:name=".OpcionesAndesActivity" />
+        <activity android:name=".AdmRegUniandesActivity"></activity>
     </application>
 
 </manifest>
