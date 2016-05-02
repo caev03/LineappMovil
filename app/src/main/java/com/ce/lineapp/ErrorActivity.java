@@ -16,5 +16,6 @@ public class ErrorActivity extends BaseActivity {
          * Setting title and itemChecked
          */
         mDrawerList.setItemChecked(position, true);
+        setTitle(getString(R.string.app_name));
     }
 }

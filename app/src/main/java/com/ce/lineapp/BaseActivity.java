@@ -1,14 +1,10 @@
 package com.ce.lineapp;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +13,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import Mundo.Util;
 
 /**
  * @author dipenp
@@ -162,7 +159,7 @@ public class BaseActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, TurnoActivity.class).putExtra("Info", Util.pedirTurno(23)));
                 break;
             case 1:
                 startActivity(new Intent(this, EntidadesActivity.class));

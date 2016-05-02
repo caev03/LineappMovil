@@ -1,9 +1,12 @@
 package com.ce.lineapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import Mundo.Util;
 
 public class AdmRegUniandesActivity extends BaseActivity implements View.OnClickListener {
 
@@ -32,7 +35,10 @@ public class AdmRegUniandesActivity extends BaseActivity implements View.OnClick
      * @param v The view that was clicked.
      */
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View v)
+    {
+        Intent i = new Intent(this, TurnoActivity.class);
+        i.putExtra("Info",Util.pedirTurno(v.getId()));
+        startActivity(i);
     }
 }

@@ -1,10 +1,11 @@
 package com.ce.lineapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import Mundo.Util;
 
 public class OpcionesAndesActivity extends BaseActivity implements View.OnClickListener {
 
@@ -41,19 +42,19 @@ public class OpcionesAndesActivity extends BaseActivity implements View.OnClickL
     @Override
     public void onClick(View v)
     {
+        Intent i;
         switch (v.getId())
         {
             case R.id.btnAdmYReg:
-                Intent i = new Intent(this, AdmRegUniandesActivity.class);
+                i = new Intent(this, AdmRegUniandesActivity.class);
                 startActivity(i);
                 break;
             default:
-                turnGiver(v.getId());
+                i = new Intent(this, TurnoActivity.class);
+                i.putExtra("Info",Util.pedirTurno(v.getId()));
+                startActivity(i);
+                break;
         }
     }
 
-    public void turnGiver(int id)
-    {
-        finish();
-    }
 }

@@ -45,7 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
-
                     android:id="@+id/txtNombre"
                     android:textColor="@color/white"
                     android:layout_weight="0.11"/>
@@ -54,8 +53,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Correo"
-                    android:focusable="false"
                     android:id="@+id/txtCorreo"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/white"
                     android:layout_weight="0.1" />
 
@@ -63,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Contraseña"
-                    android:focusable="false"
+                    android:inputType="textPassword"
                     android:id="@+id/txtContrasena"
                     android:textColor="@color/white"
                     android:layout_weight="0.1" />

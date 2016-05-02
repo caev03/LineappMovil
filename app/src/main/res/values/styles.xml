@@ -12,7 +12,7 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="DatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:colorAccent">@color/buttonsBackgroundColor</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorPrimary">@color/radialGradientStart</item>
         <item name="android:colorPrimaryDark">@color/radialGradientEnd</item>
     </style>

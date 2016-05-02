@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000</color>
+    <color name="colorPrimary">#3FA9F5</color>
     <color name="colorPrimaryDark">#404C51</color>
     <color name="colorAccent">#3FA9F5</color>
     <color name="radialGradientEnd">#065A9D</color>
     <color name="radialGradientStart">#029DD9</color>
-    <color name="buttonsBackgroundColor">#3FA9F5</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 </resources>
