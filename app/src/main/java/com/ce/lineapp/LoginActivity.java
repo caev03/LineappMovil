@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText txtLogin;
     EditText txtPassword;
+
     private static LoginActivity instancia;
     Context context;
 
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void ingresarUsuario(View v)
     {
+        Estudiante.darEstudiante().setCorreo(txtLogin.getText().toString());
         RestClient.darInstancia().loginUser(txtLogin.getText().toString(),txtPassword.getText().toString(),LoginActivity.this, this);
     }
 
@@ -62,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             Intent i = new Intent(loginActivity,EntidadesActivity.class);
             this.context = context;
-            Estudiante.darEstudiante().setId(string);
+            Estudiante.darEstudiante().setId(string.replaceAll("\"",""));
             loginActivity.startActivity(i);
         }
         else

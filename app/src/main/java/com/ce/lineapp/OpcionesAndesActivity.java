@@ -1,15 +1,27 @@
 package com.ce.lineapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
+
+import Mundo.Estudiante;
+import Mundo.RestClient;
 import Mundo.Util;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class OpcionesAndesActivity extends BaseActivity implements View.OnClickListener {
 
 
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,7 @@ public class OpcionesAndesActivity extends BaseActivity implements View.OnClickL
         Button btnCajaIng = (Button) findViewById(R.id.btnCajaIng);
         btnCajaIng.setOnClickListener(this);
 
+        mContext = this;
 
 
 
@@ -43,18 +56,38 @@ public class OpcionesAndesActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v)
     {
         Intent i;
+        String id = Estudiante.darEstudiante().getCorreo();
+        RestClient abc = RestClient.darInstancia();
         switch (v.getId())
         {
             case R.id.btnAdmYReg:
                 i = new Intent(this, AdmRegUniandesActivity.class);
                 startActivity(i);
                 break;
+            case R.id.btnApoyoFin:
+                abc.tieneTurno(id,"Apoyo Financiero",mContext);
+                break;
+            case R.id.btnCartera:
+                abc.tieneTurno(id,"Cartera",mContext);
+                break;
+            case R.id.btnFacturacion:
+                abc.tieneTurno(id,"Facturación",mContext);
+                break;
+            case R.id.btnMatriculas:
+                abc.tieneTurno(id,"Matriculas",mContext);
+                break;
+            case R.id.btnCajaMenor:
+                abc.tieneTurno(id,"Caja Menor",mContext);
+                break;
+            case R.id.btnCajaIng:
+                abc.tieneTurno(id,"Caja de Ingresos",mContext);
+                break;
             default:
-                i = new Intent(this, TurnoActivity.class);
-                i.putExtra("Info",Util.pedirTurno(v.getId()));
-                startActivity(i);
+                Log.d("DEBUG",v.getId()+"");
                 break;
         }
+
     }
+
 
 }

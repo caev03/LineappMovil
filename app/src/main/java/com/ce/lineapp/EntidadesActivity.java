@@ -35,6 +35,9 @@ public class EntidadesActivity extends BaseActivity implements View.OnClickListe
          */
         mDrawerList.setItemChecked(position, true);
         setTitle(getString(R.string.app_name));
+
+        Intent i = new Intent(this, DifTurnoService.class);
+        startService(i);
     }
     public void onClick(View v)
     {

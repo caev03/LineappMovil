@@ -26,16 +26,16 @@
                 android:textColor="@color/white"
                 android:text="Tu turno:"/>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
                 android:layout_weight="0.7"
                 android:text="U30"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:background="@drawable/fondo_turno"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:id="@+id/txtTurno"
-                android:textSize="70dp"/>
+                android:textSize="40dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

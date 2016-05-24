@@ -47,6 +47,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Pontificia\nUniversidad\nJaveriana"
+                    android:textSize="13dp"
                     android:id="@+id/btnJaveriana" />
 
             </LinearLayout>
@@ -75,6 +76,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_center"
                     android:text="Universidad\ndel Externado"
+                    android:textSize="13dp"
                     android:id="@+id/btnExternado" />
 
             </LinearLayout>

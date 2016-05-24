@@ -6,7 +6,9 @@ package Mundo;
 public class Estudiante
 {
     String id;
+    String correo;
     static Estudiante instancia;
+    String turno;
 
     public static Estudiante darEstudiante()
     {
@@ -23,5 +25,21 @@ public class Estudiante
 
     public String getId() {
         return id;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+    public void setCorreo(String abc)
+    {
+        correo = abc;
+    }
+    public String getCorreo()
+    {
+        return correo;
     }
 }

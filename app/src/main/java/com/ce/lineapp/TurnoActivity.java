@@ -2,7 +2,13 @@ package com.ce.lineapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import Mundo.Estudiante;
+import Mundo.RestClient;
 
 public class TurnoActivity extends BaseActivity {
 
@@ -14,12 +20,32 @@ public class TurnoActivity extends BaseActivity {
         mDrawerList.setItemChecked(position, true);
         setTitle(getString(R.string.app_name));
 
-        String[] data = getIntent().getExtras().getString("Info").split(";");
         TextView txtTurno = (TextView) findViewById(R.id.txtTurno);
-        txtTurno.setText(data[0]);
+        txtTurno.setText(Estudiante.darEstudiante().getTurno());
+        String turnoActual = getIntent().getStringExtra("turnoActual");
         TextView txtTurnoActual = (TextView) findViewById(R.id.txtTurnoActual);
-        txtTurnoActual.setText(data[1]);
+        txtTurnoActual.setText(turnoActual);
+        int turno = Integer.parseInt(Estudiante.darEstudiante().getTurno().split("-")[1]);
+        int intTurnoActual = Integer.parseInt(turnoActual.split("-")[1]);
         TextView txtTmpEst = (TextView) findViewById(R.id.txtTmpEst);
-        txtTmpEst.setText(data[2]+" min");
+        txtTmpEst.setText(((turno-intTurnoActual)*5)+" min");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mi_turno, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_cancel:
+                RestClient.darInstancia().cancelTurn();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

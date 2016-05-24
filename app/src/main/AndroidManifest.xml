@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ce.lineapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,7 +27,11 @@
         <activity android:name=".ErrorActivity" />
         <activity android:name=".OpcionesAndesActivity" />
         <activity android:name=".AdmRegUniandesActivity" />
-        <activity android:name=".TurnoActivity"></activity>
+        <activity android:name=".TurnoActivity" />
+
+        <service
+            android:name=".DifTurnoService"
+            android:exported="false"/>
     </application>
 
 </manifest>

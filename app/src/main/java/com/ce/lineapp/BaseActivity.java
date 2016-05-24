@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import Mundo.RestClient;
 import Mundo.Util;
 
 /**
@@ -159,7 +160,7 @@ public class BaseActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                startActivity(new Intent(this, TurnoActivity.class).putExtra("Info", Util.pedirTurno(23)));
+                RestClient.darInstancia().getTurnoActual(this);
                 break;
             case 1:
                 startActivity(new Intent(this, EntidadesActivity.class));

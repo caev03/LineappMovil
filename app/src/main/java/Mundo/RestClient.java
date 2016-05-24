@@ -1,15 +1,23 @@
 package Mundo;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.ce.lineapp.AdmRegUniandesActivity;
 import com.ce.lineapp.LoginActivity;
+import com.ce.lineapp.TurnoActivity;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import okhttp3.Call;
@@ -30,6 +38,8 @@ public class RestClient
     private static RestClient instancia;
     private boolean terminoLogin;
     private String respuestaLogin;
+    public final static String BaseURL = "http://157.253.210.165:3000/";
+    Map<String,String> dependencias =  new HashMap<String,String>();
 
     public boolean isTerminoLogin()
     {
@@ -49,6 +59,21 @@ public class RestClient
         return instancia;
     }
 
+    public RestClient()
+    {
+        dependencias.put("Apoyo Financiero","AF");
+        dependencias.put("Cartera","CR");
+        dependencias.put("Facturación","FC");
+        dependencias.put("Matriculas","MT");
+        dependencias.put("Caja Menor","CM");
+        dependencias.put("Caja de Ingresos","CI");
+        dependencias.put("Entrega de Certificados y Diplomas","ECD");
+        dependencias.put("Entrega de Carnets","EC");
+        dependencias.put("Información General Tramites Registro","IG");
+        dependencias.put("Solicitudes y Recepción de Documentos","SRD");
+        dependencias.put("Radicación Correspondencia","RC");
+    }
+
 
     public void createUser(String nombre, String correo, String contraseña, boolean preferencial) throws Exception
     {
@@ -63,7 +88,7 @@ public class RestClient
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(RetrieveFeedTask.BaseURL+"login/"+abc[1]+"-"+abc[2])
+                .url(BaseURL+"login/"+abc[1]+"-"+abc[2])
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -83,12 +108,198 @@ public class RestClient
 
     }
 
-    public void finalizoLogin(String d)
+    public void tieneTurno(final String idUsuario, final String departamento, final Context mContext)
     {
-        terminoLogin = true;
-        respuestaLogin = d;
-        Log.d("abc","Holi");
+        try
+        {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(BaseURL+"turnos/"+idUsuario)
+                    .get()
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException
+                {
+                    String resp = response.body().string();
+                    response.body().close();
+                    Log.d("DEBUG-TT",resp);
+                    int cantTurnos = Integer.parseInt(resp);
+                    if(cantTurnos!=0)
+                    {
+
+                        Looper.prepare();
+                        ((Activity)mContext).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(mContext, "Ya tiene un turno asociado", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                    else
+                    {
+                        getTurno(idUsuario,departamento,mContext);
+                    }
+                }
+            });
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
+
+    private void getTurno(final String idUsuario, final String departamento, final Context mContext)
+    {
+        try
+        {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(BaseURL+"turnosDep/"+departamento)
+                    .get()
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException
+                {
+                    String respuesta = response.body().string();
+                    Log.d("DEBUG",respuesta);
+                    response.body().close();
+                    if(respuesta.contains("start"))
+                    {
+                        String turnoFin = dependencias.get(departamento)+"-1";
+                        pedirTurno(idUsuario,departamento,turnoFin,mContext);
+                    }
+                    else
+                    {
+                        respuesta = respuesta.substring(1,respuesta.length()-1);
+                        String[] turno = respuesta.split("-");
+                        int turnirijillo = Integer.parseInt(turno[1])+1;
+                        pedirTurno(idUsuario,departamento,turno[0]+"-"+turnirijillo, mContext);
+
+                    }
+                }
+            });
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void pedirTurno(String idUsuario, String departamento, final String turno, final Context mContext)
+    {
+       try
+       {
+
+           OkHttpClient client = new OkHttpClient();
+           JSONObject json = new JSONObject();
+           Log.d("Debug",idUsuario);
+           json.put("idUsuario",idUsuario);
+           json.put("numero",turno);
+           json.put("departamento",departamento);
+           json.put("atendido",false);
+           Log.d("DEBUG",json.toString());
+           RequestBody body = RequestBody.create(RetrieveFeedTask.JSON, json.toString());
+           Request request = new Request.Builder()
+                   .url(BaseURL+"turnos/")
+                   .post(body)
+                   .build();
+
+           client.newCall(request).enqueue(new Callback() {
+               @Override public void onFailure(Call call, IOException e) {
+                   e.printStackTrace();
+               }
+
+               @Override public void onResponse(Call call, Response response) throws IOException
+               {
+                   Estudiante.darEstudiante().setTurno(turno);
+                   getTurnoActual(mContext);
+               }
+           });
+       }
+       catch(Exception e)
+       {
+            e.printStackTrace();
+       }
+    }
+
+    public void cancelTurn()
+    {
+        try
+        {
+
+            OkHttpClient client = new OkHttpClient();
+            JSONObject json = new JSONObject();
+            RequestBody body = RequestBody.create(RetrieveFeedTask.JSON, json.toString());
+            Request request = new Request.Builder()
+                    .url(BaseURL+"turnos/"+Estudiante.darEstudiante().getCorreo())
+                    .put(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override public void onResponse(Call call, Response response) throws IOException
+                {
+
+                }
+            });
+        }
+        catch(Exception e)
+        {
+
+        }
+    }
+
+    public void getTurnoActual(final Context mContext)
+    {
+
+        try
+        {
+
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(BaseURL+"turnoActualDep/"+Estudiante.darEstudiante().getCorreo())
+                    .get()
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override public void onResponse(Call call, Response response) throws IOException
+                {
+                    String respuesta = response.body().string();
+                    respuesta = respuesta.substring(1,respuesta.length()-1);
+                    response.body().close();
+
+                    Intent i = new Intent(mContext,TurnoActivity.class).putExtra("turnoActual",respuesta);
+                    mContext.startActivity(i);
+
+                }
+            });
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 class RetrieveFeedTask extends AsyncTask<String, Void, String>
@@ -98,7 +309,7 @@ class RetrieveFeedTask extends AsyncTask<String, Void, String>
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
     static OkHttpClient client = new OkHttpClient();
-    public final static String BaseURL = "http://157.253.210.159:3000/";
+
 
 
     protected String doInBackground(String... urls)
@@ -115,7 +326,7 @@ class RetrieveFeedTask extends AsyncTask<String, Void, String>
 
                 RequestBody body = RequestBody.create(JSON, json.toString());
                 Request request = new Request.Builder()
-                        .url(BaseURL+"usuarios")
+                        .url(RestClient.BaseURL+"usuarios")
                         .post(body)
                         .build();
                 Response response = client.newCall(request).execute();
@@ -131,7 +342,7 @@ class RetrieveFeedTask extends AsyncTask<String, Void, String>
             try
             {
                 Request request = new Request.Builder()
-                        .url(BaseURL+"login/"+urls[1]+"-"+urls[2])
+                        .url(RestClient.BaseURL+"login/"+urls[1]+"-"+urls[2])
                         .build();
                 Response response = client.newCall(request).execute();
                 Log.d("ABCHUEHUEHUE",response.body().string());
@@ -142,12 +353,5 @@ class RetrieveFeedTask extends AsyncTask<String, Void, String>
             }
         }
         return "";
-    }
-
-    @Override
-    protected void onPostExecute(String s)
-    {
-        Log.d("as","as");
-        RestClient.darInstancia().finalizoLogin(s);
     }
 }
