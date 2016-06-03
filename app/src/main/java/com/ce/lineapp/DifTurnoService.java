@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -48,6 +49,7 @@ public class DifTurnoService extends IntentService {
                     response.body().close();
                     if(!respuesta.contains("start"))
                     {
+                        Log.d("DEBUG",respuesta);
                         int turno = Integer.parseInt(Estudiante.darEstudiante().getTurno().split("-")[1]);
                         int intTurnoActual = Integer.parseInt(respuesta.split("-")[1]);
                         if(turno-intTurnoActual<3)

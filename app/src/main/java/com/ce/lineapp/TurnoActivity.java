@@ -1,5 +1,6 @@
 package com.ce.lineapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,6 +44,8 @@ public class TurnoActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.menu_cancel:
                 RestClient.darInstancia().cancelTurn();
+                Intent i = new Intent(this,EntidadesActivity.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import Mundo.Estudiante;
+import Mundo.RestClient;
+
 public class EntidadesActivity extends BaseActivity implements View.OnClickListener{
 
 
@@ -35,9 +38,7 @@ public class EntidadesActivity extends BaseActivity implements View.OnClickListe
          */
         mDrawerList.setItemChecked(position, true);
         setTitle(getString(R.string.app_name));
-
-        Intent i = new Intent(this, DifTurnoService.class);
-        startService(i);
+        RestClient.darInstancia().getTurno(Estudiante.darEstudiante().getCorreo(),this);
     }
     public void onClick(View v)
     {
